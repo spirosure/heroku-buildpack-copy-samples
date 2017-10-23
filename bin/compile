@@ -3,11 +3,11 @@
 require 'pathname'
 require 'fileutils'
 
-TEMPLATE = ENV['COPY_SAMPLE_FILE_TEMPLATE'] || '*.yml.sample'
+TEMPLATE = ENV['COPY_SAMPLE_FILE_TEMPLATE'] || 'yml.sample'
 sample_files = "#{ARGV[0]}/config"
 
 def sample_iterator(root)
-  Pathname.glob(File.join(root, TEMPLATE)).each do |sample_file|
+  Pathname.glob(File.join(root, "*.#{TEMPLATE}")).each do |sample_file|
     yield(sample_file, sample_file.sub(TEMPLATE, 'yml'))
   end
 end

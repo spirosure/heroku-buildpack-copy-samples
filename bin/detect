@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 #bin/detect <build-dir>
 
-if [ -f $1/config/$COPY_SAMPLE_FILE_TEMPLATE ]; then
-  echo 'Copy samples for Rails'
-  exit 0
-else
-  echo "Can't find sample files"
-  exit 1
-fi
+echo 'Copy samples for Rails'
+exit 0

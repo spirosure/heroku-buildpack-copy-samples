@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+
+require 'fileutils'
+
+sample_files = "#{ARGV[0]}/config"
+TEMPLATES = %w(yml.sample sample.yml yml.example example.yml).freeze
+
+def sample_iterator(root)
+  TEMPLATES.each do |template|
+    Pathname.glob(File.join(root, "*.#{template}")).each do |sample_file|
+      yield(sample_file, sample_file.sub(template, 'yml'))
+    end
+  end
+end
+
+def copy_samples(root)
+  sample_iterator(root) do |sample_file, config_file|
+    if config_file.exist? || config_file.symlink?
+      puts "#{config_file} already exist, skipping."
+    else
+      FileUtils.cp(sample_file, config_file) unless config_file.exist?
+      puts "Made a copy of #{sample_file} to #{config_file}."
+    end
+  end
+end
+
+def sample_exist?(root)
+  exist = false
+  sample_iterator(root) { exist = true }
+  exist
+end
+
+if sample_exist? sample_files
+  puts copy_samples(sample_files)
+else
+  puts "       !!!! No files found to copy from #{sample_files}"
+  exit 1
+end

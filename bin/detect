@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#bin/detect <build-dir>
+
+echo "Copy samples for Rails"
+exit 0

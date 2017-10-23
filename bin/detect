@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #bin/detect <build-dir>
 
-if [ -f $1/config/*yml* ]; then
+if [ -f $1/config/$COPY_SAMPLE_FILE_TEMPLATE ]; then
   echo 'Copy samples for Rails'
   exit 0
 else

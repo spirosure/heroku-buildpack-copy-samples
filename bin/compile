@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require 'pathname'
 require 'fileutils'
 
 sample_files = "#{ARGV[0]}/config"

@@ -1,9 +1,10 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env bash
 #bin/detect <build-dir>
 
-if ENV['COPY_SAMPLE_FILE_TEMPLATE']
-  puts 'Copy samples for Rails'
+if [ -f $1/config/*yml* ]; then
+  echo 'Copy samples for Rails'
   exit 0
 else
+  echo "Can't find sample files"
   exit 1
-end
+fi

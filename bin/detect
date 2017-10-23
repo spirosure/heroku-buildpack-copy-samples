@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
+#bin/detect <build-dir>
 
 if ENV['COPY_SAMPLE_FILE_TEMPLATE']
-  puts "Copy samples for Rails"
+  puts 'Copy samples for Rails'
   exit 0
 else
   exit 1

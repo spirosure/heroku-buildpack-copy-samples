@@ -1,5 +1,8 @@
-#!/usr/bin/env bash
-#bin/detect <build-dir>
+#!/usr/bin/env ruby
 
-echo "Copy samples for Rails"
-exit 0
+if ENV['COPY_SAMPLE_FILE_TEMPLATE']
+  puts "Copy samples for Rails"
+  exit 0
+else
+  exit 1
+end
